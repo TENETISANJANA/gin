@@ -1,0 +1,353 @@
+/* CSS for the Responsive Navbar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+body {
+  min-height: 100vh;
+  background: #f0f0f0;
+}
+
+.top-nav {
+  background-color: black;
+  color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.top-nav .top-nav-items {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.top-nav .top-nav-items li a {
+  color: #fff;
+  font-size: 16px;
+}
+
+.top-nav .top-nav-items li a:hover,
+.top-nav .top-nav-items li a:focus {
+  color: yellow;
+}
+
+header {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+header .gila {
+  margin-right: auto;
+}
+
+header .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+header .navbar .nav-items {
+  list-style: none;
+  display: flex;
+}
+
+header .navbar .nav-items li {
+  position: relative;
+  margin-right: 30px;
+}
+
+header .navbar .nav-items li a {
+  font-size: 18px;
+  padding: 10px;
+  color: #333;
+  display: block;
+  position: relative;
+}
+
+header .navbar .nav-items li a::after {
+  content: "▼";
+  color: yellow;
+  margin-left: 2px;
+  font-size: 12px;
+}
+
+header .navbar .nav-items li a:hover::after,
+header .navbar .nav-items li a:focus::after {
+  color: yellow;
+}
+
+header .navbar .nav-items li a:hover,
+header .navbar .nav-items li a:focus {
+  background: yellow;
+  color: #000;
+}
+
+header .navbar .nav-items li ul {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 10px);
+  width: 220px;
+  background: yellow;
+  display: none;
+  z-index: 1000;
+  list-style: none;
+}
+
+header .navbar .nav-items li:hover > ul,
+header .navbar .nav-items li:focus-within > ul {
+  display: block;
+}
+
+header .navbar .nav-items li ul li a {
+  padding: 10px;
+  color: #000;
+  font-size: 16px;
+}
+
+header .navbar .nav-items li ul li a:hover,
+header .navbar .nav-items li ul li a:focus {
+  background: yellow;
+  color: #000;
+}
+
+header .navbar .search-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+header .navbar .search-container input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 300px;
+  height: 50px;
+}
+
+header .navbar .search-container .retailer-btn {
+  background: #ffcc00;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 200px; /* Adjusted width */
+  height: 50px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+header .navbar .search-container .retailer-btn:hover {
+  background-color: #ff9900;
+}
+
+#menu-bar {
+  display: none;
+}
+
+header label.menu-icon {
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 991px) {
+  header {
+    padding: 20px;
+    flex-wrap: wrap;
+    top: 0;
+  }
+
+  .top-nav,
+  header .navbar {
+    display: none;
+  }
+
+  header label.menu-icon {
+    display: block;
+  }
+
+  #menu-bar:checked ~ .navbar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  header .navbar {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  header .navbar .search-container,
+  header .navbar .search-container input,
+  header .navbar .search-container .retailer-btn {
+    width: calc(50% - 10px);
+    height: calc(100% + 10%);
+  }
+
+  header .navbar .search-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+
+  header .navbar .nav-items {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  header .navbar .nav-items li {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  header .navbar .nav-items li ul {
+    position: relative;
+    width: 100%;
+    left: auto;
+    top: auto;
+  }
+
+  header .navbar .retailer-btn {
+    width: calc(50% - 10px);
+    text-align: center;
+    margin-top: 10px;
+    order: 2;
+  }
+
+  header .navbar .search-container {
+    order: 1;
+  }
+
+  header .navbar .nav-items li:nth-child(3) ul li a::after {
+    content: none;
+  }
+
+  /* Show Warranty, About, Contact */
+  .top-nav {
+    display: none;
+  }
+  
+  #menu-bar:checked ~ .top-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .top-nav .top-nav-items {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .top-nav .top-nav-items li {
+    width: 100%;
+  }
+}
+
+/* Styles for the hero section */
+.hero-section {
+  position: relative;
+  text-align: left; /* Align text to the left */
+  color: white;
+  width: 100%;
+  height: 100vh; /* Ensure the hero section takes the full viewport height */
+  overflow: hidden; /* Hide overflow content */
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%; /* Make sure the image takes the full height */
+  object-fit: cover; /* Ensure the image covers the entire hero section */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Place the image behind the text */
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 20px; /* Move text away from the edge */
+  transform: translateY(-50%);
+  padding: 20px;
+  border-radius: 10px;
+  color: black;
+  font: normal normal normal 1.2rem / 1.5rem 'SourceSans-Pro-Light', sans-serif; /* Adjusted font size */
+  letter-spacing: .035rem;
+  opacity: 1;
+  text-align: left; /* Align text to the left */
+  text-transform: none;
+}
+
+.hero-text h1 {
+  font-size: 2em; /* Adjusted font size */
+  margin-bottom: 10px;
+  color: black;
+}
+
+.hero-text p {
+  font-size: 1.2em; /* Adjusted font size */
+  margin-bottom: 20px;
+  color: black;
+}
+
+.discover-btn {
+  background-color: yellow;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.discover-btn:hover {
+  background-color: #ffcc00;
+}
+
+@media (max-width: 991px) {
+  .hero-text {
+    left: 10px; /* Adjust position for smaller screens */
+    padding: 10px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.5em; /* Adjusted font size for smaller screens */
+  }
+
+  .hero-text p {
+    font-size: 1em; /* Adjusted font size for smaller screens */
+  }
+
+  .discover-btn {
+    font-size: 0.9em; /* Adjusted button size for smaller screens */
+  }
+}
